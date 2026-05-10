@@ -651,94 +651,6 @@
     50%      { opacity: 0.9; }
   }
 
-  /* ── FUTURE SCENARIOS ────────────────────────── */
-  .scenarios-section {
-    position: relative; z-index: 1;
-    padding: 80px 60px 100px;
-    max-width: 1200px; margin: 0 auto;
-  }
-  .scenarios-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .sc-card {
-    position: relative;
-    padding: 44px 36px 40px;
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 3px;
-    overflow: hidden;
-    display: flex; flex-direction: column;
-    transition: transform 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards;
-    animation-play-state: paused;
-  }
-  .sc-card.visible { animation-play-state: running; }
-  .sc-card:nth-child(1) { animation-delay: 0.1s; }
-  .sc-card:nth-child(2) { animation-delay: 0.25s; }
-  .sc-card:nth-child(3) { animation-delay: 0.4s; }
-  .sc-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .sc-card:hover { transform: translateY(-8px); border-color: rgba(124,111,255,0.25); box-shadow: 0 40px 80px rgba(0,0,0,0.45), 0 0 60px rgba(124,111,255,0.06); }
-  .sc-card:hover::before { opacity: 1; }
-  .sc-glow {
-    position: absolute;
-    width: 260px; height: 260px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(124,111,255,0.1) 0%, transparent 70%);
-    top: -80px; right: -80px;
-    opacity: 0; transition: opacity 0.4s; pointer-events: none;
-  }
-  .sc-card:hover .sc-glow { opacity: 1; }
-  .sc-index {
-    font-family: 'Syne', sans-serif; font-size: 11px;
-    font-weight: 700; letter-spacing: 0.3em;
-    color: var(--accent2); opacity: 0.5; margin-bottom: 28px;
-  }
-  .sc-icon-wrap {
-    width: 52px; height: 52px;
-    border: 1px solid rgba(124,111,255,0.18);
-    border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 24px;
-    background: rgba(124,111,255,0.05);
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  .sc-card:hover .sc-icon-wrap { border-color: rgba(124,111,255,0.4); box-shadow: 0 0 20px rgba(124,111,255,0.12); }
-  .sc-icon-wrap svg { width: 22px; height: 22px; }
-  .sc-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 19px; font-weight: 700;
-    letter-spacing: -0.02em; color: var(--text);
-    margin-bottom: 14px; line-height: 1.3;
-  }
-  .sc-desc {
-    font-size: 14px; font-weight: 300;
-    line-height: 1.8; color: var(--muted);
-    flex: 1; margin-bottom: 32px;
-  }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 10px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: none; color: var(--accent2);
-    background: transparent;
-    border: 1px solid rgba(124,111,255,0.28);
-    border-radius: 2px; cursor: pointer;
-    align-self: flex-start;
-    transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
-  }
-  .btn-ghost:hover { border-color: var(--accent2); background: rgba(124,111,255,0.08); box-shadow: 0 0 20px rgba(124,111,255,0.12); }
-  .btn-ghost .ga { font-size: 13px; transition: transform 0.2s; }
-  .btn-ghost:hover .ga { transform: translateX(3px); }
-
   /* ── SIGNALS OF CHANGE ───────────────────────── */
   .signals-section {
     position: relative; z-index: 1;
@@ -821,13 +733,10 @@
 
   /* ── RESPONSIVE ADDITIONS ────────────────────── */
   @media (max-width: 900px) {
-    .scenarios-section { padding: 60px 30px; }
-    .scenarios-grid { grid-template-columns: 1fr; gap: 16px; }
     .signals-label { padding: 0 30px; margin-bottom: 40px; }
     .signal-item { padding: 26px 36px; }
   }
   @media (max-width: 600px) {
-    .scenarios-section { padding: 48px 20px 64px; }
     .signals-label { padding: 0 20px; }
     .signal-item { padding: 24px 28px; gap: 12px; }
     .signal-value { font-size: 16px; }
@@ -1182,62 +1091,6 @@
 
 <div class="hr"></div>
 
-<!-- FUTURE SCENARIOS -->
-<section class="scenarios-section" id="scenarios">
-  <div class="section-label" id="label-scenarios">Future Scenarios</div>
-
-  <div class="scenarios-grid">
-
-    <div class="sc-card" id="sc-1">
-      <div class="sc-glow"></div>
-      <div class="sc-index">01</div>
-      <div class="sc-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(124,111,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-          <path d="M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/>
-        </svg>
-      </div>
-      <div class="sc-title">AI-Assisted Civilization</div>
-      <div class="sc-desc">Networks of intelligence amplify human decision-making across every domain — from medicine to governance to education.</div>
-      <a href="#signals" class="btn-ghost">Explore <span class="ga">→</span></a>
-    </div>
-
-    <div class="sc-card" id="sc-2">
-      <div class="sc-glow"></div>
-      <div class="sc-index">02</div>
-      <div class="sc-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(124,111,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 20h9"/>
-          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-        </svg>
-      </div>
-      <div class="sc-title">Human Creative Renaissance</div>
-      <div class="sc-desc">As automation handles the repetitive, humans reclaim the creative and the meaningful — art, philosophy, invention, culture.</div>
-      <a href="#signals" class="btn-ghost">Explore <span class="ga">→</span></a>
-    </div>
-
-    <div class="sc-card" id="sc-3">
-      <div class="sc-glow"></div>
-      <div class="sc-index">03</div>
-      <div class="sc-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(124,111,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="5" r="2"/>
-          <circle cx="5" cy="19" r="2"/>
-          <circle cx="19" cy="19" r="2"/>
-          <path d="M12 7v5M12 12l-5.5 5M12 12l5.5 5"/>
-        </svg>
-      </div>
-      <div class="sc-title">Decentralized Knowledge Networks</div>
-      <div class="sc-desc">Information flows freely, bypassing legacy gatekeepers and enabling peer-to-peer learning at global scale.</div>
-      <a href="#signals" class="btn-ghost">Explore <span class="ga">→</span></a>
-    </div>
-
-  </div>
-</section>
-
-<div class="hr"></div>
-
 <!-- SIGNALS OF CHANGE -->
 <section class="signals-section" id="signals">
   <div class="signals-label" id="label-signals">Signals of Change</div>
@@ -1336,7 +1189,6 @@
   observe('.stat');
   observe('.why-heading', 0.1);
   observe('.why-card', 0.1);
-  observe('.sc-card', 0.1);
   observe('.signals-label', 0.1);
   observe('.connect-eyebrow', 0.1);
   observe('.connect-title', 0.1);
